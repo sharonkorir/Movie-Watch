@@ -77,17 +77,20 @@ def get_movie(id):
 
     return movie_object
 
-def search_movie(movie_name):
-    search_movie_url = 'https://api.themoviedb.org/3/search/movie?api_key={}&query={}'.format(api_key,movie_name)
-    with urllib.request.urlopen(search_movie_url) as url:
-        search_movie_data = url.read()
-        search_movie_response = json.loads(search_movie_data)
+def email_subscription(user_email):
+    pass
 
-        search_movie_results = None
+def select_genre(genre_name):
+    get_genre_url = 'https://api.themoviedb.org/3/genre/movie/list?api_key={}'.format(api_key,genre_name)
+    with urllib.request.urlopen(get_genre_url) as url:
+        genre_data = url.read()
+        get_genre_response = json.loads(genre_data)
 
-        if search_movie_response['results']:
-            search_movie_list = search_movie_response['results']
-            search_movie_results = process_results(search_movie_list)
+        get_genre_results = None
+
+        if get_genre_response['genres']:
+            genre_list = get_genre_response['genres']
+            get_genre_results = process_results(genre_list)
 
 
-    return search_movie_results
+    return get_genre_results

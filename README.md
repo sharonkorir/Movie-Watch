@@ -3,6 +3,7 @@
 
 
 # Description
+This is a flask application that allows users to view details of current popular movies. User can subscribe for daily movie recommendations
 
 
 ## Contributors
@@ -25,9 +26,9 @@ In order for you to use the content on this repo ensure you have the following:
   ```bash
     git clone 
   ```
-* Navigate to the pomodoro directory and install requirements
+* Navigate to the moviewatch directory and install requirements
   ```bash
-  cd pitch-world
+  cd movie watch
   pip install -r requirements.txt
   ```
 * Running the application
@@ -56,6 +57,7 @@ In order for you to use the content on this repo ensure you have the following:
 
 ## Known bugs
 
+No known bugs
 
 ## Support and contact details
 

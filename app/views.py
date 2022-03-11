@@ -10,7 +10,7 @@ def index():
   # Getting popular movie
     popular_movies = get_movies('popular')
     print(popular_movies)
-    title = "Home - Welcome to Night'sWatch"
+    title = "Home - Welcome to MovieWatch"
     # Getting movie
     movie = get_movie
     return render_template('index.html', title = title,popular = popular_movies)
