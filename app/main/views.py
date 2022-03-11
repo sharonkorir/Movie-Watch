@@ -1,10 +1,10 @@
 from flask import render_template
-from app import app
-from .request import get_movies,get_movie
+from . import main
+from ..request import get_movies,get_movie
 
 
 
-@app.route('/')
+@main.route('/', methods=['GET','POST'])
 def index():
 
   # Getting popular movie
@@ -16,7 +16,7 @@ def index():
     return render_template('index.html', title = title,popular = popular_movies)
 
 
-@app.route('/movie/<int:id>')
+@main.route('/movie/<int:id>')
 def movie(id):
 
     '''
