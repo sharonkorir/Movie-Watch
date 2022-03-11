@@ -8,14 +8,68 @@
       <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
         <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-responsive">
     </div>
+    <!--movie details-->
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 movie-details">
+      <h3>{{ movie.title }}</h3>
+      <p class="overview"> {{ movie.overview }}</p>
+      <p class="ratings"> <b> {{ movie.vote_average }}</b> - <i>{{ movie.vote_count}} votes </i> </p>
+      <!--movie trailer-->
+      <div class="col-sm-12">
+        {% if trailer %}
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#trailer">
+            See Trailer
+        </button>
+        <p>testing trailer</p>
+        {% for trailer in trailer %}
+        <p>testing trailer</p>
+        <p>{{trailer.key}}</p>
+        {% if trailer.type == 'Trailer' %}
 
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 movie-details">
-            <h3>{{ movie.title }}</h3>
 
-            <p class="overview"> {{ movie.overview }}</p>
-            <p class="ratings"> <b> {{ movie.vote_average }}</b> - <i>{{ movie.vote_count}} votes </i> </p>
-
+        <!-- Modal -->
+        <div class="modal" id="trailer" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title w-100" id="exampleModalLabel">Trailer for {{movie.title}}
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12" id="trailer">
+                                    <iframe width="560" height="315"
+                                        src="https://www.youtube.com/embed/{{trailer.key}}"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+
+        {% endif %}
+        {% else %}
+
+        {% endfor %}
+        {% endif %}
+
+      </div>
     </div>
+    </div>
+
 </div>
 {% endblock %}

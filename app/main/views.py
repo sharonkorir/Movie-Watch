@@ -1,6 +1,6 @@
 from flask import render_template
 from . import main
-from ..request import get_movies,get_movie
+from ..request import get_movies,get_movie,show_trailer
 
 
 
@@ -24,5 +24,6 @@ def movie(id):
     '''
     movie = get_movie(id)
     title = f'{movie.title}'
+    trailers = show_trailer(id)
 
-    return render_template('movie.html',title = title,movie = movie)
+    return render_template('movie.html',title = title,movie = movie, trailer = trailers)

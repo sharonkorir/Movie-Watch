@@ -1,5 +1,5 @@
 import urllib.request,json
-from .models import Movie
+from .models import Movie, Trailer
 
 # Getting api key
 api_key = None
@@ -97,3 +97,35 @@ def select_genre(genre_name):
 
 
     return get_genre_results
+
+def show_trailer(id):
+    '''
+    Function to get movie trailer key terms and search on youtube
+    '''
+    trailer_url = 'https://api.themoviedb.org/3/movie/{}/videos?api_key={}'.format(
+        id, api_key)
+
+    with urllib.request.urlopen(trailer_url) as url:
+        trailer_data = url.read()
+        trailer_response = json.loads(trailer_data)
+
+        movie_trailer_results = None
+        if trailer_response['results']:
+            trailer_list = trailer_response['results']
+            movie_trailer_results = process_trailer_results(trailer_list)
+
+    return movie_trailer_results
+
+
+def process_trailer_results(trailer_list):
+    trailer_results = []
+    for trailer_item in trailer_list:
+        id = trailer_item.get('id')
+        name = trailer_item.get('name')
+        key = trailer_item.get('key')
+        type = trailer_item.get('type')
+
+        trailer_object = Trailer(id, name, key,type)
+        trailer_results.append(trailer_object)
+
+    return trailer_results

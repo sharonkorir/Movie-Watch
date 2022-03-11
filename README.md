@@ -57,7 +57,7 @@ In order for you to use the content on this repo ensure you have the following:
 
 ## Known bugs
 
-No known bugs
+This application has no back-end yet :)
 
 ## Support and contact details
 
