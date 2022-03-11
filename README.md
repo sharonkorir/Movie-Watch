@@ -5,7 +5,6 @@
 # Description
 
 
-
 ## Contributors
 
 - [Sharon Korir](https://github.com/sharonkorir)
